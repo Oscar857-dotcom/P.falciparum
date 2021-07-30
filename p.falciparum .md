@@ -105,6 +105,43 @@ gatk SelectVariants \
  #indels
  gatk VariantsToTable -V indels.vcf.gz -F QD -F FS -F SOR -F MQ -F DP  -O indels.table
 ````
+### visulisition of tables in R.
+````
+## ggplots for SNPS AND INDELS
+library(ggplot2)
+#SNPS
+SNPQD.plot <- ggplot(data = SNPS, aes(x=QD)) + geom_density(alpha=0.2)
+SNPQD.plot
+#INDELS
+INDELQD.plot <- ggplot(data = indels, aes(x=QD)) + geom_density(alpha=0.2)
+INDELQD.plot
+#generating MQ  PLOT
+#SNPS
+SNPMQ.plot <- ggplot(data = SNPS, aes(x=MQ)) + geom_density(alpha=0.2)
+SNPMQ.plot
+#INDELS
+#INDELMQ.plot <- ggplot(data = indels, aes(x=MQ)) + geom_density(alpha=0.2)
+#INDELMQ.plot
+#SNPS
+SNPSOR.plot <- ggplot(data = SNPS, aes(x=SOR)) + geom_density(alpha=0.2)
+SNPSOR.plot
+#INDELS
+INDELSOR.plot <- ggplot(data = indels, aes(x=SOR)) + geom_density(alpha=0.2)
+INDELSOR.plot
+#SNPS
+SNPDP.plot <- ggplot(data = SNPS, aes(x=DP)) + geom_density(alpha=0.2)
+SNPDP.plot + scale_x_log10()
+#INDELS
+INDELDP.plot <- ggplot(data = indels, aes(x=DP)) + geom_density(alpha=0.2)
+INDELDP.plot + scale_x_log10()
+##FS
+#SNPS
+SNPFS.plot <- ggplot(data = SNPS, aes(x=FS)) + geom_density(alpha=0.2)
+SNPFS.plot + scale_x_log10()
+#INDELS
+INDELFS.plot <- ggplot(data = indels, aes(x=FS)) + geom_density(alpha=0.2)
+INDELFS.plot + scale_x_log10()
+````
 ### filtering
 ````
 gatk VariantFiltration \
