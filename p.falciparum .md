@@ -168,13 +168,13 @@ java -Xmx8g -jar snpEff.jar GRCh37.75 /opt/data/bole/variant/filtered.vcf > Pf.a
 ````
 java -Xmx8g -jar snpEff.jar GRCh37.75 /opt/data/bole/variant/SNPfiltered.vcf.gz  > snp.ann.vcf
 ````
+## Running loop(working)
+```
+parallel 'gatk HaplotypeCaller -R Pfalciparum.genome.fasta  -I {} -O {}.hppc.g.vcf' ::: *.bam
+````
 
 ## challenge
-### 1.Errors;troubleshooting 
-````
-parallel 'gatk HaplotypeCaller -R Pfalciparum.genome.fasta  -I {}.bam -O {}.hppc.g.vcf' ::: *.bam
-````
-### 2.viewing from HPC using IGV.
+### 1.viewing from HPC using IGV.
 
 ## NEXT STEP
 * Automate using workflow.
